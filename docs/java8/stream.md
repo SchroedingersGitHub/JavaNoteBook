@@ -15,10 +15,12 @@
 
 ## 02 最终操作
 
-> 最终操作**:** 将流中的元素整理理成我们想要的各种数据
->
+**最终操作:** 将流中的元素整理理成我们想要的各种数据
+
+
 
 ### 1: collect
+
 **作用:** 将流中的所有的元素转成指定类型
 
 ```java
@@ -29,10 +31,13 @@ Set<Person> set = s.collect(Collectors.toSet()); // 转Set
 Map<String, Integer> map = s.collect(Collectors.toMap(Person::getName, Person::getScore)); // 转map
 ```
 
+
+
 ### 2: reduce
 
 **作用:** 将数据按照一定**规则**统计在一起
-**参数：**BinaryOperator<T>
+
+**参数：**`BinaryOperator<T>`
 
 ```java
 // 需求1：求若干数字的和
@@ -46,9 +51,11 @@ Optional<Person> person1 = s.reduce((n1, n2) -> tmp.setScore(n1.getScore() + n2.
 System.out.println(tmp.getScore());
 ```
 
-### **3: count** 
 
-**作用: **统计流中的元素数量量  
+
+### 3: count
+
+**作用:**  统计流中的元素数量 
 
 ```java
 Stream<Person> s = Data.getData().stream();
@@ -56,10 +63,13 @@ long count = s.count();
 System.out.println(count);
 ```
 
+
+
 ### 4: max  min
 
-**作用：**按照比较规则获取 阈值 
-**参数：**Comparator<? super T> 
+**作用：**  按照比较规则获取 阈值 
+
+**参数：`Comparator<? super T> `**
 
 ```java
 Stream<Person> s = Data.getData().stream();
@@ -72,10 +82,13 @@ Person person = s.min((o1, o2) -> o1.getAge() - o2.getAge()).get();
 System.out.println(person);
 ```
 
+
+
 ### 5: anyMatch  allMatch  noneMatch
 
 **作用：** 1. 判断流中是否有满足条件的元素    2. 判断流中的所有元素是否都满足指定的条件  3. 判断流中的元素是否都不不满足指定的条件 
-**参数：**Predicate<T> 
+
+**参数：**`Predicate<T> `
 
 ```java
 Stream<Person> s = Data.getData().stream();
@@ -92,10 +105,13 @@ boolean res2 = s.noneMatch(person -> person.getScore() < 60);
 System.out.println(res2);
 ```
 
+
+
 ### 06: forEach
 
 **作用：**依次获取流中的每⼀一个元素，实现元素的迭代，并将元素带入到某⼀个逻辑代码段中指定指定的逻辑 
-**参数: ** Consumer<T> 
+
+**参数:** `Consumer<T> `
 
 ```java
 Stream<Person> s = Data.getData().stream();
@@ -119,7 +135,8 @@ Person min = s.min((ele1, ele2) -> ele1.getAge() - ele2.getAge()).get();
 ### 1. filter
 
 **作用：**是一个过滤器 ，可以自定义过滤条件 满足的被留下
-**参数：**Predicate<? super T> 
+
+**参数：`Predicate<? super T> `**
 
 ```java
 // 需求：保留成绩大于80的学员
@@ -128,7 +145,8 @@ Person min = s.min((ele1, ele2) -> ele1.getAge() - ele2.getAge()).get();
 
 ### 2. distinct
 
-**作用: **去重操作
+**作用:**去重操作
+
 **逻辑:** 先判断HashCode,    如果hashcode相等 再判断equals
 
 ```java
@@ -137,9 +155,10 @@ Data.getData().stream().distinct().forEach(System.out::println);
 
 ### 3. sorted
 
-**作用：**排序
-**逻辑：** sorted()  无参类需要实现Comparator<T> 接口
-			sorted(Comparator<? super T> comparator) 自定义排序规则  优先级最高
+**作用:**排序
+
+**逻辑：** `sorted() ` 无参类需要实现`Comparator<T>` 接口
+			`sorted(Comparator<? super T> comparator) `自定义排序规则  优先级最高
 
 ```java
 // 无参
@@ -165,7 +184,7 @@ Data.getData().stream().limit(3).forEach(System.out::println);
 
 ### 5. skip
 
- **作用： **跳过流中前指定位的元素 
+ **作用:**跳过流中前指定位的元素 
 
 ```java
 Data.getData().stream().skip(3).forEach(System.out::println);
@@ -173,8 +192,10 @@ Data.getData().stream().skip(3).forEach(System.out::println);
 
 ### 6. map
 
-**作用： **元素映射，将指定元素替换流中元素
-**参数：** Function<T,  R> 
+**作用：**元素映射，将指定元素替换流中元素
+
+**参数：** `Function<T,  R> `
+
 **逻辑：** 将流中元素带入Function方法参数中，返回值来代替流中的元素
 
 ```java
@@ -193,16 +214,16 @@ forEach(System.out::println);
 
 ## 04 Collectors 工具类
 
-* toList, toSet, toMap 
+* `toList`, `toSet`, `toMap` 
 
-* maxBy, minBy: 按照指定的规则获取最大值, 最小值
+* `maxBy`, `minBy`: 按照指定的规则获取最大值, 最小值
 
   ```java
   Optional<Person> optional = Data.getData().stream()
   .collect(Collectors.maxBy((o1, o2) -> o1.getScore() - o2.getScore()));
   ```
 
-* joining  合并, 将流中的元素, 以字符串的形式拼接起来
+* `joining`  合并, 将流中的元素, 以字符串的形式拼接起来
 
   ```java
   // joining() 无参  xiaomingxiaolixiaowangxiaozhangxiaomeixiaoheixiaohei
@@ -218,7 +239,7 @@ forEach(System.out::println);
            System.out.println(names__);
   ```
 
-* summingInt   将流中的元素映射成一个int类型的元素, 最后进行求和
+* `summingInt`   将流中的元素映射成一个int类型的元素, 最后进行求和
 
     ```java
      Integer sumScore = Data.getData().stream()
@@ -226,14 +247,14 @@ forEach(System.out::println);
      System.out.println(sumScore);
     ```
     
-* averagingInt  求平均值
+* `averagingInt`  求平均值
   
   ```java
    Double avgScore = Data.getData().stream()
    .collect(Collectors.averagingInt(Person::getScore));
   ```
 
-* summarizingInt 将流中的元素映射成一个int类型的元素, 最后获取这些数据的描述信息
+* `summarizingInt` 将流中的元素映射成一个int类型的元素, 最后获取这些数据的描述信息
 
   ```java
   // IntSummaryStatistics{count=7, sum=505, min=50, average=72.142857, max=100}

@@ -1,25 +1,32 @@
 # 
 
-<center><h1>线程</h1></center>
+
+
 ## 1. 串行与并发
 
 ## 2. 进程与线程
 
-> 区别: 进程资源之间是不共享的 而线程之间却可以共享
-> 进程包含线程  线程最大 进程较小
-> 进程中最少拥有一个线程，当唯一的线程挂了，那么该进程也随之挂了
+区别: 进程资源之间是不共享的 而线程之间却可以共享
+进程包含线程  线程最大 进程较小
+进程中最少拥有一个线程，当唯一的线程挂了，那么该进程也随之挂了
+
+
 
 ## 3. 线程的生命周期
 
-> 1. 新生态(New)：一个线程对象被实例化完成，但是还没有做任何的操作
-> 2. 就绪态(Ready)：一个线程已经被开启(线程实例调用了start()方法)，已经开始争抢CPU时间片
-> 3. 运行态(Run)：一个线程抢到了CPU时间片，开始执行这个线程中的逻辑
-> 4. 阻塞态(Interrupt)：一个线程在运行的过程中，受到某些操作的影响，放弃了已经获取的CPU时间片，并日不再参与CPU时间片的争抢，此时线程处于挂起状态
-> 5. 死亡态(Dead)：一个线程对象需要被销毁
+1. `新生态(New)：`一个线程对象被实例化完成，但是还没有做任何的操作
+2. `就绪态(Ready)：`一个线程已经被开启(线程实例调用了start()方法)，已经开始争抢CPU时间片
+3. `运行态(Run)：`一个线程抢到了CPU时间片，开始执行这个线程中的逻辑
+4. `阻塞态(Interrupt)：`一个线程在运行的过程中，受到某些操作的影响，放弃了已经获取的CPU时间片，并日不再参与CPU时间片的争抢，此时线程处于挂起状态
+5. `死亡态(Dead)：`一个线程对象需要被销毁
 
-* ![截屏2019-11-19上午10.40.26](thread.assets/截屏2019-11-19上午10.40.26.png)
+![截屏2019-11-19上午10.40.26](thread.assets/ndnn.png)
+
+
 
 ## 4. 线程的开辟方式
+
+
 
 ### 1. 通过继承Thread类
 
@@ -47,6 +54,8 @@ class MyThread extends Thread {
 
 ```
 
+
+
 ### 2. 通过实现Runnable接口
 
 ```java
@@ -68,7 +77,13 @@ public static void main(String[] args) {
 }
 ```
 
+
+
+
+
 ## 5. 线程的命名
+
+
 
 ### 1. 通过实例后的对象设置
 
@@ -77,11 +92,15 @@ Thread t1 = new Thread(() -> {});
 t1.setName("custom");
 ```
 
+
+
 ### 2. 通过线程构造方法设置
 
 ```java
 Thread t1 = new Thread(() -> {},"custom");
 ```
+
+
 
 ### 3. 通过自定义类 提供线程命名的构造方法
 
@@ -103,11 +122,13 @@ class MyThread2 extends Thread {
 }
 ```
 
+
+
 ## 6. 线程的休眠
 
-> 方法: Thread.sleep(1000);   // 毫秒为单位
+**方法:** Thread.sleep(1000);   // 毫秒为单位
 
-```Java
+```java
 @Override
 public void run() {
         for (int i = 0; i < 10; i++) {
@@ -121,12 +142,16 @@ public void run() {
     }
 ```
 
+
+
+
+
 ## 7. 线程的优先级
 
-> 方法：.setPriority(10);
-> 设置线程的优先级，只是修改这个线程抢到CPU时间片的概率
-> 并不是优先级高的就一定抢到时间片
-> 优先级的设置 [0,10] 默认是5
+**方法：**.setPriority(10);
+设置线程的优先级，只是修改这个线程抢到CPU时间片的概率
+并不是优先级高的就一定抢到时间片
+优先级的设置 [0,10] 默认是5
 
 ```java
  public static void ThreadPriority() {
@@ -147,10 +172,14 @@ public void run() {
     }
 ```
 
+
+
+
+
 ## 8. 线程的礼让
 
-> 方法：Thread.yield();
-> 线程礼让是指 让当前线程释放自己CPU资源，由运行状态 回到就绪状态
+**方法：**Thread.yield();
+线程礼让是指 让当前线程释放自己CPU资源，由运行状态 回到就绪状态
 
 ```java
 public static void ThreadYield() {
@@ -172,12 +201,16 @@ public static void ThreadYield() {
     }
 ```
 
+
+
+
+
 ## 9. 临界资源解决方案
 
 ### 1. 同步代码段
 
-> synchronized () {}     参数：对象锁、类锁、
-> 但必须保证一点，多个线程看到的锁必须是同一把锁
+**synchronized () {}**     参数：对象锁、类锁、
+但必须保证一点，多个线程看到的锁必须是同一把锁
 
 ```java
 public static void main(String[] args) {
@@ -210,12 +243,12 @@ public static void main(String[] args) {
 
 ### 2. 同步方法
 
-> 使用synchronized修饰方法
->
-> 静态方法：同步锁就是 类锁 当前类.class
-> 非静态方法：同步锁就是 this
+使用`synchronized`修饰方法
 
-```Java
+静态方法：同步锁就是 类锁 `当前类.class`
+非静态方法：同步锁就是` this`
+
+```java
 public static void main(String[] args) {
         // 演示：四个售票员在同时卖票
         Runnable r1 = () -> {
@@ -248,12 +281,14 @@ public static void main(String[] args) {
 
 ### 3. 显式锁 ReentrantLock
 
-> * 对象：ReentrantLock
-> * 方法: 
->   * .lock();  锁住临界资源
->   * .unlock();  释放临界资源
+**对象：**`ReentrantLock`
 
-```Java
+**方法:** 
+
+* `.lock(); ` 锁住临界资源
+* `.unlock(); ` 释放临界资源
+
+```java
  public static void main(String[] args) {
 
         /**
@@ -292,9 +327,13 @@ public static void main(String[] args) {
     }
 ```
 
+
+
+
+
 ## 10. 死锁
 
-> 多个线程彼此持有对方所需要的锁对象，而不释放自己的锁
+多个线程彼此持有对方所需要的锁对象，而不释放自己的锁
 
 ```java
  public static void main(String[] args) {
@@ -333,15 +372,19 @@ public static void main(String[] args) {
     }
 ```
 
+
+
+
+
 ## 11. wait notify notifyAll
 
-> wait: 等待，是Object类中方法，作用是释放当前锁标记，让出CPU资源，使当前线程进入等待队列中
-> notify: 通知，也是object类中的方法，唤醒等待队列的一个线程，使这个线程进入锁池
-> notifyAll: 通知，也是object类中的方法，唤起等待队列中所有的线程，并使得这些线程进入锁池
+**wait:** 等待，是Object类中方法，作用是释放当前锁标记，让出CPU资源，使当前线程进入等待队列中
+**notify:** 通知，也是object类中的方法，唤醒等待队列的一个线程，使这个线程进入锁池
+**notifyAll:** 通知，也是object类中的方法，唤起等待队列中所有的线程，并使得这些线程进入锁池
 
 **死锁解决方法**
 
-```Java
+```java
 Runnable r1 = () -> {
 
             synchronized ("A") {
@@ -382,7 +425,11 @@ Runnable r1 = () -> {
     }
 ```
 
+
+
 ## 12: 生产者与消费者
+
+
 
 **Producer类**
 
@@ -394,9 +441,11 @@ public class Producer {
 }
 ```
 
+
+
 **ProducerPool类**
 
-```Java
+```java
 package com.max.producer_and_customer;
 
 import java.util.LinkedList;
@@ -462,9 +511,11 @@ public class ProducerPool {
 
 ```
 
+
+
 **Program类**
 
-```Java
+```java
 package com.max.producer_and_customer;
 
 public class Program {

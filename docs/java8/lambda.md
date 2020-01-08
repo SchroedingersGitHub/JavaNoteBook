@@ -1,66 +1,70 @@
 ## 01 Lambda 简介
 
->  Lambda表达式是Java 8推出的一个新特性。从本质上讲，**Lambda表达式是一个匿名函数。**
+Lambda表达式是Java 8推出的一个新特性。从本质上讲，**Lambda表达式是一个匿名函数。**
+
+
 
 **为什么使用Lambda表达式?**
 
 使⽤Lambda表达式可以对⼀个接口进⾏非常简洁的实现。
 
-> ```java
-> package com.max.lambda;
-> 
-> public class Program {
->     public static void main(String[] args) {
-> 
->         // i 使用接口实现类
->         TestInterface myTestInterface = new MyTestInterface();
-> 
->         // ii 使用匿名内部类
->         TestInterface testInterface = new TestInterface() {
->             @Override
->             public int test(int a, int b) {
->                 return 0;
->             }
->         };
->       
->         // iii Lambda表达式
->         TestInterface testInterface2 = (a, b) -> (a - b);
->     }
-> }
-> 
-> class MyTestInterface implements TestInterface {
-> 
->     @Override
->     public int test(int a, int b) {
->         return a - b;
->     }
-> }
-> 
-> interface TestInterface {
->     int test(int a, int b);
-> }
-> ```
+```java
+package com.max.lambda;
+
+public class Program {
+ public static void main(String[] args) {
+
+     // i 使用接口实现类
+     TestInterface myTestInterface = new MyTestInterface();
+
+     // ii 使用匿名内部类
+     TestInterface testInterface = new TestInterface() {
+         @Override
+         public int test(int a, int b) {
+             return 0;
+         }
+     };
+   
+     // iii Lambda表达式
+     TestInterface testInterface2 = (a, b) -> (a - b);
+ }
+}
+
+class MyTestInterface implements TestInterface {
+
+ @Override
+ public int test(int a, int b) {
+     return a - b;
+ }
+}
+
+interface TestInterface {
+ int test(int a, int b);
+}
+```
 
 ### Lambda对接⼝口的要求?
 
-> 1. 接口的要实现抽象方法只有一个  （**不包括被default修饰的方法**）
-> 2. **@FunctionalInterface** 修饰的函数式接口 -> 表示该接口有且只能有一个必须实现的抽象方法
+1. 接口的要实现抽象方法只有一个  （**不包括被default修饰的方法**）
+2. `@FunctionalInterface` 修饰的函数式接口 -> 表示该接口有且只能有一个必须实现的抽象方法
+
+
 
 ## 02 Lambda 基础语法
 
-> 一个方法包括:   返回值 方法名 参数 方法体     -- 经Lambda后 -->     **返回值 参数**  （我们在写Lambda表达式的时候，只需要关⼼参数和方法体即可 ）
+一个方法包括:   返回值 方法名 参数 方法体     -- 经Lambda后 -->     **返回值 参数**  （我们在写Lambda表达式的时候，只需要关⼼参数和方法体即可 ）
 
-* 参数： 用 () 包括起来
+* 参数： 用` ()` 包括起来
 
-* 方法体：用 {} 包围起来
+* 方法体：用 `{} `包围起来
 
-*  lambda运算符 用  -> 分割参数和方法体
+*  lambda运算符 用 ` ->` 分割参数和方法体
 
   
   
+
   
-  
-  ```java
+```java
   //i 无参 无返回
   LambdaNoneReturnNoneParameter lambda1 = () -> {
       System.out.println("hello World");
@@ -92,21 +96,29 @@
   };
   System.out.println(lambda5.test(30));
   
-// iii  有返回值 多个参数
-  LambdaSingleReturnMultipleParameter lambda6 = (int a,int b) -> a+b;
-  System.out.println(lambda6.test(10,40));
-  ```
+  // iii  有返回值 多个参数
+    LambdaSingleReturnMultipleParameter lambda6 = (int a,int b) -> a+b;
+    System.out.println(lambda6.test(10,40));
   
-  
+```
+
+
+
+
+
+
 
 ## 03 语法精简
 
-> 概念：接⼝中定义的方法，已经声明了方法的参数类型、数量和返回值类型。所以，使用Lambda表达式在 实现的时候，对应的部分可以省略
+**概念：**接⼝中定义的方法，已经声明了方法的参数类型、数量和返回值类型。所以，使用Lambda表达式在 实现的时候，对应的部分可以省略
+
+
 
 ### 1. 参数类型
 
->  由于在接口抽象方法中定义了参数类型，所以来Lambda表达式中可以省略
->  ps: 如果省略 则每一个参数类型都要省略
+由于在接口抽象方法中定义了参数类型，所以来Lambda表达式中可以省略
+
+**ps:** 如果省略 则每一个参数类型都要省略
 
 ```java
  LambdaNoneReturnMultipleParameter Lambda = (a, b) -> {
@@ -114,9 +126,11 @@
   };
 ```
 
+
+
 ### 2. 参数括号
 
-> ps: 参数只有一个情况下可以
+**ps:** 参数只有一个情况下可以
 
 ```java
 LambdaNoneReturnSingleParmeter lambda2 = a -> {
@@ -124,17 +138,21 @@ LambdaNoneReturnSingleParmeter lambda2 = a -> {
 };
 ```
 
+
+
 ###  3. 方法大括号
 
->  ps: 方法体只有一条语句时
+**ps:** 方法体只有一条语句时
 
 ```java
 LambdaNoneReturnSingleParmeter lambda3 = a -> System.out.println("hello world" + a);
 ```
 
+
+
 ### 4. 返回值
 
-> 如果方法体中唯一的一条语句是返回值，在精简掉⼤大括号后，return也必须省略略 
+如果方法体中唯一的一条语句是返回值，在精简掉⼤大括号后，return也必须省略略 
 
 ```java
 // int test();
@@ -144,19 +162,34 @@ LambdaSingleReturnNoneParmeter lambda4 = () -> 10;
 LambdaSingleReturnMultipleParameter lambda5 = (a, b) -> a + b;
 ```
 
+
+
+
+
+
+
 ## 04 方法引用
 
-> 概念：可以快速将一个Lambda表达式中的实现指向一个 已经实现的方法
->
-> * 语法：方法隶属者 :: 方法名  
->   * 方法隶属者：
->    		 	方法分为静态方法(通过类名直接调用)   类名::方法名
->    		 	非静态方法(需要创建对象引用的方法)   对象::方法名
-> *  ps:
->   * 方法的 参数类型 和 参数数量 要和接口定义的方法一致
->   * 返回值的类型 也要和接口中定义的方法一致
+**概念：**可以快速将一个Lambda表达式中的实现指向一个 已经实现的方法
 
- **静态方法：**
+语法：`方法隶属者 :: 方法名  `
+
+**方法隶属者：**
+
+方法分为静态方法(通过类名直接调用)   `类名::方法名`
+
+非静态方法(需要创建对象引用的方法)   `对象::方法名`
+
+ 	
+
+**ps:**
+
+* 方法的 参数类型 和 参数数量 要和接口定义的方法一致
+* 返回值的类型 也要和接口中定义的方法一致
+
+
+
+###  静态方法：
 
 ```java
 
@@ -186,7 +219,9 @@ public class Syntax3 {
 }
 ```
 
- **非静态方法：**
+ 
+
+### 非静态方法：
 
 ```java
 package com.max.lambda.test;
@@ -218,9 +253,9 @@ class Precess {
 
 ```
 
-**构造方法：**
+### 构造方法：
 
->  如果需要引⽤⼀个构造方法，需要使用 类::new 进⾏引⽤
+如果需要引⽤⼀个构造方法，需要使用 `类::new` 进⾏引⽤
 
 ```java
 package com.max.lambda.syntax;
@@ -253,9 +288,13 @@ public class Syntax4 {
 }
 ```
 
+
+
 ## 05 综合案例
 
-###  集合排序  -> Comparator<? super E> 
+###  集合排序  
+
+`Comparator<? super E>`
 
 ```java
 package com.max.lambda.exercise;
@@ -290,7 +329,9 @@ public class Exercise1 {
 
 ```
 
-###  TreeSet  -> Comparator<? super E>
+###  TreeSet
+
+` Comparator<? super E>`
 
 ```java
 package com.max.lambda.exercise;
@@ -324,9 +365,11 @@ public class Exercise2 {
 
 ```
 
-### forEach -> Consumer<? super E> 
+### forEach 
 
-```Java
+`Consumer<? super E> `
+
+```java
 package com.max.lambda.exercise;
 
 import java.util.ArrayList;
@@ -356,9 +399,11 @@ public class Exercise3 {
 
 ```
 
-###  removeIf -> Predicate<? super E> 
+###  removeIf  
 
-```Java
+`Predicate<? super E> `
+
+```java
 package com.max.lambda.exercise;
 
 import com.max.lambda.data.Person;
@@ -400,7 +445,9 @@ public class Exercise4 {
 
 ```
 
-###  线程实例化 Runnable接口
+###  线程实例化 
+
+`Runnable接口`
 
 ```java
 package com.max.lambda.exercise;
@@ -423,6 +470,8 @@ public class Exercise5 {
 
 ```
 
+
+
 ## 06 系统内置函数式接⼝
 
 |                  函数式接口                  | 描述                                          |                  实现方法                   |                            子接口                            |
@@ -437,9 +486,11 @@ public class Exercise5 {
 |              BiPredicate<T, U>               | 参数T, U  返回值boolean                       |           boolean test(T t, U u);           |                                                              |
 |               iConsumer<T, U>                | 参数T, U  返回值void                          |           void accept(T t, U u);            |                                                              |
 
+
+
 ### 常用
 
-```Java
+```java
 // 参数T  返回值boolean   boolean test(T t);
 Predicate<T>
   
@@ -455,30 +506,30 @@ Supplier<T>
 
 ## 07 闭包
 
->  什么是闭包?
->
->  > 在一个方法中 在方法执行结束后(Return) 方法的局部变量也就被销毁了 但在做返回时（返回值是一个是接口的实现）却引用了该变量，使得变量的作用域增加了  这种情况就是闭包。
->
->   闭包的注意事项：
->
->  > 引用的变量必须被 final 所修饰 
->
->  ```java
->  package com.max.lambda.closure;
->  
->  import java.util.function.Consumer;
->  
->  public class ClosureDemo2 {
->      public static void main(String[] args) {
->          int a = 10;
->          Consumer<Integer> c = ele -> {
->              System.out.println(a);
->          };
->  
->          // a++;
->          c.accept(1);
->      }
->  }
->  
->  ```
+**什么是闭包?**
+
+在一个方法中 在方法执行结束后(Return) 方法的局部变量也就被销毁了 但在做返回时（返回值是一个是接口的实现）却引用了该变量，使得变量的作用域增加了  这种情况就是闭包。
+
+**闭包的注意事项：**
+
+引用的变量必须被 final 所修饰 
+
+```java
+package com.max.lambda.closure;
+
+import java.util.function.Consumer;
+
+public class ClosureDemo2 {
+  public static void main(String[] args) {
+      int a = 10;
+      Consumer<Integer> c = ele -> {
+          System.out.println(a);
+      };
+
+      // a++;
+      c.accept(1);
+  }
+}
+
+```
 
