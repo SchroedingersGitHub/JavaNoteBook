@@ -104,7 +104,7 @@ public class User {
 
 
 
-## 03 分模块配置
+## 04 分模块配置
 
 **在加载时，添加多个配置文件名称：**
 
@@ -139,7 +139,7 @@ public class User {
 
 
 
-## 04 Spring属性注入
+## 05 Spring属性注入
 
 ###  构造方法
 
@@ -545,7 +545,7 @@ public class User {
 
 
 
-## 05 IOC注解
+## 06 IOC注解
 
 在spring4之后，想要使用注解形式，必须得要引入aop的包
 在配置文件当中，还得要引入一个context约束   配置组件扫描 ：
@@ -644,14 +644,14 @@ public class User {
 
 
 
-## 06 Spring单元测试
+## 07 Spring单元测试
 
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 ```
 
-## 07 AOP相关术语
+## 08 AOP相关术语
 
 
 
@@ -668,7 +668,7 @@ public class User {
 
 
 
-## 08 AOP使用
+## 09 AOP使用
 
 1. 引入aop开发的相关jar包
 
@@ -725,7 +725,7 @@ public class User {
 
 
 
-## 09 AOP通知类型
+## 10 AOP通知类型
 
 ```xml
 <!--前置通知   在目标方法执行之前进行操作 -->
@@ -809,7 +809,7 @@ public void exceptionM(Throwable ex){
 
 
 
-## 10  AOP切入点表达式
+## 11  AOP切入点表达式
 
 基于execution函数完成语法 ：
 
@@ -836,7 +836,7 @@ public void exceptionM(Throwable ex){
 
 
 
-## 11 AOP注解方式ApsectJ开发
+## 12 AOP注解方式ApsectJ开发
 
 * 引入Jar包 
 * 引入配置文件
@@ -919,7 +919,7 @@ public void exceptionM(Throwable ex){
  
 ```
 
-## 12 JDBC模板使用的入门
+## 13 JDBC模板使用的入门
 
 导入架包：
 
@@ -1007,7 +1007,7 @@ public class SpringJdbcTest2 {
 
 
 
-## 13 配置开源连接池
+## 14 配置开源连接池
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1080,7 +1080,7 @@ public class SpringJdbcTest2 {
 
 
 
-## 14 读取属性配置文件
+## 15 读取属性配置文件
 
 >  **注意：属性文件名称不能与name名称一样**
 
@@ -1159,7 +1159,7 @@ dtd
 
 
 
-## 15 JDBC模板CRUD操作
+## 16 JDBC模板CRUD操作
 
 > 注入数据最好指定name名 
 > @Resource(name = "jdbcTemplate") 
@@ -1295,7 +1295,7 @@ public class SpringJdbcTest2 {
 
 
 
-## 16 Spring事务相关
+## 17 Spring事务相关
 
  **Spring的事务管理的API**：
 
@@ -1342,7 +1342,7 @@ Spring进行事务管理的时候，首先平台事务管理器根据事务定�
 
 
 
-## 17 事务使用
+## 18 事务使用
 
 ### 声明式事务
 
