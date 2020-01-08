@@ -1024,7 +1024,7 @@ public class SpringJdbcTest2 {
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql:///spring"/>
         <property name="username" value="root"/>
-        <property name="password" value="li767787498"/>
+        <property name="password" value="12345"/>
     </bean>
 
     <!--dacp连接池-->
@@ -1032,7 +1032,7 @@ public class SpringJdbcTest2 {
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql:///spring"/>
         <property name="username" value="root"/>
-        <property name="password" value="li767787498"/>
+        <property name="password" value="12345"/>
     </bean>
 
     <!--c3p0连接池-->
@@ -1040,7 +1040,7 @@ public class SpringJdbcTest2 {
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql:///spring"/>
         <property name="user" value="root"/>
-        <property name="password" value="li767787498"/>
+        <property name="password" value="12345"/>
     </bean>
 
     <!--druid连接池-->
@@ -1048,7 +1048,7 @@ public class SpringJdbcTest2 {
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql:///spring"/>
         <property name="username" value="root"/>
-        <property name="password" value="li767787498"/>
+        <property name="password" value="12345"/>
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
