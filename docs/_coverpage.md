@@ -1,4 +1,4 @@
-<img width="200px" src="images/maomi.png">
+<img width="200px" src="images/maomi.svg">
 
 ### **JavaNoteBook**
 
