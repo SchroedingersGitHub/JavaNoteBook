@@ -5,6 +5,10 @@
     * [02 Struts2](framework/Struts2.md)
     * [03 SpringFramework](framework/Spring.md)
     * [04 SpringMVC](framework/SpringMVC.md)
+    * [05 Mybatis](framework/Mybatis.md)
+    * [06 Shiro](framework/Shiro.md)
+    * [07 SpringBoot](framework/SpringBoot.md)
+    * [08 SpringDataJpa](framework/SpringDataJpa.md)
     * [09 Activiti](framework/Activiti.md)
 
 * Java8的新特性
