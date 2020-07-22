@@ -11,10 +11,11 @@
     * [08 SpringDataJpa](framework/SpringDataJpa.md)
     * [09 Activiti](framework/Activiti.md)
 
-* Java8的新特性
+* Java
 
     * [01 Lambda函数式编程](java8/lambda.md)
     * [02 Stream流式操作](java8/stream.md)
+    * [03 多线程](other/thread.md)
 
 * 常用命令
 
@@ -24,5 +25,5 @@
 
 * 其他
 
-    * [01 多线程](other/thread.md)
+   
 
