@@ -2,6 +2,6 @@
 
 ### **JavaNoteBook**
 
-[GitHub](<https://github.com/schroedinger-cat/JavaNoteBook>)
-[Get Started](<https://schroedinger-cat.github.io/JavaNoteBook/#/README>)
+[GitHub](<https://github.com/SchroedingersGitHub/JavaNoteBook>)
+[Start](<https://schroedingersgithub.github.io/JavaNoteBook/#/README>)
 
