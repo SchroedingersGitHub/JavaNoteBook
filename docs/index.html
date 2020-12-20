@@ -8,56 +8,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" href="https://raw.githubusercontent.com/schroedinger-cat/JavaNoteBook/master/docs/images/maomi.png">
-    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-    <style type="text/css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css" />
 
-        .content,
-        .sidebar,
-        .markdown-section,
-        body,
-        .search input {
-            background-color: rgba(243, 242, 238, 1) !important;
-        }
+    <style>
+    nav.app-nav li ul {
+      min-width: 100px;
+    }
+  </style>
 
-        .markdown-section img {
-            box-shadow: 7px 9px 10px #aaa !important;
-        }
-
-        img,
-        pre {
-            border-radius: 8px;
-        }
-
-        .markdown-section pre > code {
-            font-family: Consolas, Roboto Mono, Monaco, courier, monospace !important;
-            /*font-size: .9rem !important;*/
-        }
-
-        pre {
-            background-color: #f3f2ee !important;
-        }
-
-        @media (min-width: 600px) {
-            pre code {
-                padding-left: 20px !important;
-            }
-        }
-
-        @media (max-width: 600px) {
-            pre {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-            }
-        }
-
-        .markdown-section pre {
-            padding-left: 0 !important;
-            padding-right: 0px !important;
-            box-shadow: 2px 1px 20px 2px #aaa;
-        }
-
-
-    </style>
 </head>
 
 <body>
@@ -73,7 +31,7 @@
         coverpage: true,
         search: {
             paths: 'auto',
-            placeholder: 'Type to search ',
+            placeholder: '搜索 ',
             noData: 'No Results! ',
             depth: 6
         }
@@ -83,7 +41,7 @@
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify-copy-code"></script>
 <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
-<script src="https://cdn.bootcss.com/docsify/4.5.9/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-basic.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-css.min.js"></script>
@@ -98,6 +56,7 @@
 <script src="//unpkg.com/prismjs/components/prism-yaml.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-vim.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-c.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
 
 
 </body>
